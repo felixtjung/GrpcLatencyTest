@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestGrpcWebsite", "TestGrpcWebsite\TestGrpcWebsite.csproj", "{B91CA02B-3E58-4BF6-967C-4665C57A6515}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcClientConsole", "GrpcClientConsole\GrpcClientConsole.csproj", "{EEC1EE24-C74F-4439-968E-18D663D7ADE3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B91CA02B-3E58-4BF6-967C-4665C57A6515}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B91CA02B-3E58-4BF6-967C-4665C57A6515}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B91CA02B-3E58-4BF6-967C-4665C57A6515}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B91CA02B-3E58-4BF6-967C-4665C57A6515}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEC1EE24-C74F-4439-968E-18D663D7ADE3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEC1EE24-C74F-4439-968E-18D663D7ADE3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEC1EE24-C74F-4439-968E-18D663D7ADE3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEC1EE24-C74F-4439-968E-18D663D7ADE3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
