@@ -7,8 +7,8 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
 COPY ["TestGrpcWebsite.csproj", "TestGrpcWebsite/"]
 RUN dotnet restore "TestGrpcWebsite/TestGrpcWebsite.csproj"
-COPY . .
 WORKDIR "/src/TestGrpcWebsite"
+COPY . .
 RUN dotnet build "TestGrpcWebsite.csproj" -c Release -o /app/build
 
 FROM build AS publish
