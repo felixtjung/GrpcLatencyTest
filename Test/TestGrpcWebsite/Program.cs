@@ -12,6 +12,10 @@ builder.WebHost.ConfigureKestrel(options =>
         listenOptions.Protocols = HttpProtocols.Http2;
         //listenOptions.UseHttps("<path to .pfx file>", "<certificate password>");
     });
+    options.Listen(IPAddress.Any, 80, listenOptions =>
+    {
+        listenOptions.Protocols = HttpProtocols.Http1;
+    });
 });
 var app = builder.Build();
 
