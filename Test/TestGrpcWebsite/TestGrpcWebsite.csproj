@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Protobuf Include="Protos\greeter.proto" />
+      <Protobuf Include="**\*.proto"  />
     </ItemGroup>
 
 
