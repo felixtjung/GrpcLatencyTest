@@ -9,14 +9,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Protobuf Include="Protos\greeter.proto">
-        <GrpcServices>Both</GrpcServices>
-        <Access>Public</Access>
-        <ProtoCompile>True</ProtoCompile>
-        <CompileOutputs>True</CompileOutputs>
-        <OutputDir>obj\Debug\net7.0\</OutputDir>
-        <Generator>MSBuild:Compile</Generator>
-      </Protobuf>
+        <Protobuf Include="**\*.proto"  />
     </ItemGroup>
 
     <ItemGroup>
@@ -26,6 +19,13 @@
         <PrivateAssets>all</PrivateAssets>
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="..\.dockerignore">
+        <Link>.dockerignore</Link>
+      </Content>
     </ItemGroup>
 
 </Project>

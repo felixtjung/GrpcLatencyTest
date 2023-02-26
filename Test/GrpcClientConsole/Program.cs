@@ -1,8 +1,14 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Grpc.Net.Client;
+using Microsoft.Extensions.Configuration;
 
-using (var channel = GrpcChannel.ForAddress("http://localhost:9300"))
+var configuration = new ConfigurationManager();
+
+var grpcServerUrl = configuration["GRPC_SERVER_URL"] ?? "http://localhost:9300";
+Console.WriteLine($"Using GRPC Server Url: {grpcServerUrl}");
+
+using (var channel = GrpcChannel.ForAddress(grpcServerUrl))
 {
     var client = new Greeter.GreeterClient(channel);
     var firstTimeLatencyMsecs = await GetLatencyMsecsAsync(client);
