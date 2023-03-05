@@ -1,12 +1,10 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using Grpc.Net.Client;
-using Microsoft.Extensions.Configuration;
+using MathNet.Numerics.Statistics;
 
-var configuration = new ConfigurationManager();
-
-var grpcServerUrl = configuration["GRPC_SERVER_URL"] ?? "http://localhost:9300";
-Console.WriteLine($"Using GRPC Server Url: {grpcServerUrl}");
+var grpcServerUrl = Environment.GetEnvironmentVariable("GRPC_SERVER_URL") ?? "http://localhost:9300";
+Console.WriteLine($"Using GRPC Server Url : {grpcServerUrl}");
 
 using (var channel = GrpcChannel.ForAddress(grpcServerUrl))
 {
@@ -20,8 +18,17 @@ using (var channel = GrpcChannel.ForAddress(grpcServerUrl))
         msecLatencyList.Add(latencyMsecs);
     }
 
+    var stdev = Statistics.StandardDeviation(msecLatencyList);
+    var pct90 = Statistics.Percentile(msecLatencyList, 90);
+    var pct95 = Statistics.Percentile(msecLatencyList, 95);
+    var pct99 = Statistics.Percentile(msecLatencyList, 99);
+
     Console.WriteLine($"FirstTimeLatency: {firstTimeLatencyMsecs}msecs");
     Console.WriteLine($"Average 100 Latency: {msecLatencyList.Average()}msecs");
+    Console.WriteLine($"Stdev 100 Latency: {stdev}msecs");
+    Console.WriteLine($"Pct-90 Latency: {pct90}msecs");
+    Console.WriteLine($"Pct-95 Latency: {pct95}msecs");
+    Console.WriteLine($"Pct-99 Latency: {pct99}msecs");
 }
 
 async Task<double> GetLatencyMsecsAsync(Greeter.GreeterClient client)
