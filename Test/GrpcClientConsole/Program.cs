@@ -12,7 +12,7 @@ using (var channel = GrpcChannel.ForAddress(grpcServerUrl))
     var firstTimeLatencyMsecs = await GetLatencyMsecsAsync(client);
 
     var msecLatencyList = new List<double>();
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < 1000; i++)
     {
         var latencyMsecs = await GetLatencyMsecsAsync(client);
         msecLatencyList.Add(latencyMsecs);
@@ -24,11 +24,11 @@ using (var channel = GrpcChannel.ForAddress(grpcServerUrl))
     var pct99 = Statistics.Percentile(msecLatencyList, 99);
 
     Console.WriteLine($"FirstTimeLatency: {firstTimeLatencyMsecs}msecs");
-    Console.WriteLine($"Average 100 Latency: {msecLatencyList.Average()}msecs");
-    Console.WriteLine($"Stdev 100 Latency: {stdev}msecs");
-    Console.WriteLine($"Pct-90 Latency: {pct90}msecs");
-    Console.WriteLine($"Pct-95 Latency: {pct95}msecs");
-    Console.WriteLine($"Pct-99 Latency: {pct99}msecs");
+    Console.WriteLine($"Average 1000 Requests Latency: {msecLatencyList.Average()}msecs");
+    Console.WriteLine($"Stdev 1000 Requests Latency: {stdev}msecs");
+    Console.WriteLine($"Pct-90 1000 Requests Latency: {pct90}msecs");
+    Console.WriteLine($"Pct-95 1000 Requests Latency: {pct95}msecs");
+    Console.WriteLine($"Pct-99 1000 Requests Latency: {pct99}msecs");
 }
 
 async Task<double> GetLatencyMsecsAsync(Greeter.GreeterClient client)
